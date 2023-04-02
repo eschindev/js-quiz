@@ -1,13 +1,20 @@
-/* #answers-area {
-    display: flex;
-    flex-direction: column;
-} */
+#quiz-area {
+    display: none;
+}
 
 #hs-and-timer-area {
     display: flex;
 }
 
-.answer-button {
+#end-screen {
+    display: none;
+}
+
+#hs-screen {
+    display: none;
+}
+
+button {
     display: block;
     width: auto;
     padding: 10px;

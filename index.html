@@ -6,7 +6,7 @@
     <title>JS Quiz</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <script rel="script" href="./assets/js/script.js"></script>
+    <script rel="script" src="./assets/js/script.js"></script>
   </head>
   <body>
     <header>
@@ -20,15 +20,35 @@
             </div>
         </div>
     </header>
-    <div id="game-area">
+    <div id="start-screen">
+        <h3>Coding Quiz Challenge</h3>
+        <p>This is a quiz on basic JavaScript functionality. There are five questions, and 
+            you will have 60 seconds to answer as many questions as you can. 
+            You will lose 15 seconds for each incorrect answer, and your final score 
+            will be the remaining time when you complete all five questions. Press the 
+            "Start Quiz" button to begin.</p>
+        <button id="start-button">Start Quiz</button>
+    </div>
+    <div id="quiz-area">
        <h3 id="question"></h3>
        <div id="answers-area">
-            <button class="answer-button">A. <span id="answer-1"></span></button>
-            <button class="answer-button">B. <span id="answer-2"></span></button>
-            <button class="answer-button">C. <span id="answer-3"></span></button>
-            <button class="answer-button">D. <span id="answer-4"></span></button>
+            <button id="answer-button-1" data-question="1">A. <span id="answer-1"></span></button>
+            <button id="answer-button-2" data-question="2">B. <span id="answer-2"></span></button>
+            <button id="answer-button-3" data-question="3">C. <span id="answer-3"></span></button>
+            <button id="answer-button-4" data-question="4">D. <span id="answer-4"></span></button>
         </div>
     </div>
-    </header>
+    <div id="end-screen">
+        <h3>Thanks for playing!</h3>
+        <p>Your score was <span id="quiz-score"></span></p>
+        <form>
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials" name="initials">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="hs-screen">
+
+    </div>
   </body>
 </html>  
