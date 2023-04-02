@@ -1,0 +1,19 @@
+/* #answers-area {
+    display: flex;
+    flex-direction: column;
+} */
+
+#hs-and-timer-area {
+    display: flex;
+}
+
+.answer-button {
+    display: block;
+    width: auto;
+    padding: 10px;
+    background-color: purple;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin: 5px;
+    text-align: left;
+}
