@@ -23,6 +23,7 @@ var answer4;
 var finalScore;
 var quizScore;
 var hsTable;
+var isCorrect;
 
 window.onload = function() {
     hsButton = document.getElementById("hs-button");
@@ -39,6 +40,7 @@ window.onload = function() {
     quizScore = document.getElementById("quiz-score");
     hsTable = document.getElementById("hs-table");
     question = document.getElementById("question");
+    isCorrect = document.getElementById("is-correct");
     answer1 = document.getElementById("answer-button-1");
     answer1.addEventListener("click", function() {
         quiz.checkAnswer(parseInt(answer1.dataset.question))
@@ -100,10 +102,12 @@ var quiz = {
     },
     correctAnswer: function() {
         currentQuestion++;
+        isCorrect.textContent = "Correct!"
         quiz.nextQuestion();
     },
     wrongAnswer: function() {
         currentQuestion++;
+        isCorrect.textContent = "Incorrect"
         timeLeft -= 15;
         if (timeLeft > 0) {
             quiz.nextQuestion();
