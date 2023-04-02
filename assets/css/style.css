@@ -1,3 +1,12 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: aliceblue;
+}
+
 #quiz-area {
     display: none;
 }
@@ -21,6 +30,33 @@ button {
     background-color: purple;
     color: whitesmoke;
     border-radius: 5px;
-    margin: 5px;
+    margin: 5px auto 5px auto;
     text-align: left;
+}
+
+#answers-area {
+    align-content: left;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+table {
+    border-style: solid;
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px dashed lightgrey;
+    border-radius: 5px;
 }
