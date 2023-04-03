@@ -1,3 +1,4 @@
+// declaring all variables to ensure availability
 var timeLeft;
 var initialsScore;
 var timer;
@@ -26,6 +27,7 @@ var hsTable;
 var isCorrect;
 var clearHsButton;
 
+// correlates variables to HTML elements and adds event listeners after HTML has finished loading
 window.onload = function() {
     hsButton = document.getElementById("hs-button");
     hsButton.addEventListener("click", quiz.showHS);
@@ -74,14 +76,14 @@ window.onload = function() {
             score: finalScore
         }
         localStorage.setItem(Date.now().toString(), JSON.stringify(initialsScore));
-        console.log(JSON.stringify(initialsScore));
         quiz.showHS();
     });
 }
 
+// quiz object holds all functions related to quiz functionality
 var quiz = {
+    // starts quiz by displaying the quiz screen, hiding other screens, setting relevant variables to initial values, and starting countdown
     startQuiz: function() {
-        console.log("startGame ran");
         timeLeft = 60;
         finalScore = 0;
         countdown();
@@ -92,22 +94,21 @@ var quiz = {
         currentQuestion = 0;
         quiz.nextQuestion();
     },
+    // checks the selected answer against the correct answer
     checkAnswer: function(a) {
-        console.log("checkAnswer");
-        console.log(a)
         if (quizContent[currentQuestion][a] === quizContent[currentQuestion][5]) {
-            console.log("correct!");
             quiz.correctAnswer();
         } else {
-            console.log("incorrect")
             quiz.wrongAnswer();
         }
     },
+    // increments the current question when user gets the correct answer
     correctAnswer: function() {
         currentQuestion++;
         isCorrect.textContent = "Correct!"
         quiz.nextQuestion();
     },
+    // increments the current question and removes 15s from the timer when user gets the incorrect answer
     wrongAnswer: function() {
         currentQuestion++;
         isCorrect.textContent = "Incorrect"
@@ -118,6 +119,7 @@ var quiz = {
             quiz.endQuiz();
         }
     },
+    // checks if the most recent question was the last one and ends quiz if so, otherwise, loads next question to quiz area
     nextQuestion: function() {
         if (quizContent[currentQuestion] === undefined) {
             quiz.endQuiz();
@@ -129,6 +131,7 @@ var quiz = {
             answer4.textContent = quizContent[currentQuestion][4];
         }
     },
+    // displays the end screen and hides all others, terminates countdown if still in progress, and displays final score
     endQuiz: function() {
         startScreen.style.display = "none";
         quizArea.style.display = "none";
@@ -142,6 +145,7 @@ var quiz = {
         }
         quizScore.textContent = finalScore;
     },
+    // displays the HS screen and hides all others, loads HSs from localStorage into array, sorts array by descending score, adds values to table, displays table
     showHS: function() {
         startScreen.style.display = "none";
         quizArea.style.display = "none";
@@ -150,8 +154,8 @@ var quiz = {
 
         var highScoresArr = [];
         for (i = 0; i < localStorage.length; i++) {
-            let key = localStorage.key(i);
-            let value = JSON.parse(localStorage.getItem(key));
+            var key = localStorage.key(i);
+            var value = JSON.parse(localStorage.getItem(key));
             highScoresArr.push([value.initials, parseInt(value.score)]);
         }
         highScoresArr.sort(function(a, b) {
@@ -173,12 +177,14 @@ var quiz = {
             hsTable.appendChild(row);
         }
     },
+    // clears all HSs from localStorage and refreshes HS table
     clearHS: function() {
         localStorage.clear();
         quiz.showHS();
     }
 }
 
+// manages the timer, and accounts for early termination when endQuiz sets timeLeft = -1
 function countdown() {
     var timeInterval = setInterval(function () {
       if (timeLeft >= 1) {
