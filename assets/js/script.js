@@ -24,6 +24,7 @@ var finalScore;
 var quizScore;
 var hsTable;
 var isCorrect;
+var clearHsButton;
 
 window.onload = function() {
     hsButton = document.getElementById("hs-button");
@@ -41,6 +42,8 @@ window.onload = function() {
     hsTable = document.getElementById("hs-table");
     question = document.getElementById("question");
     isCorrect = document.getElementById("is-correct");
+    clearHsButton = document.getElementById("clear-hs-button");
+    clearHsButton.addEventListener("click", quiz.clearHS)
     answer1 = document.getElementById("answer-button-1");
     answer1.addEventListener("click", function() {
         quiz.checkAnswer(parseInt(answer1.dataset.question))
@@ -169,6 +172,10 @@ var quiz = {
             row.appendChild(scoreCell);
             hsTable.appendChild(row);
         }
+    },
+    clearHS: function() {
+        localStorage.clear();
+        quiz.showHS();
     }
 }
 

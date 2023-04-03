@@ -34,6 +34,10 @@ button {
     text-align: left;
 }
 
+button:hover {
+    background-color: magenta;
+}
+
 #answers-area {
     align-content: left;
 }
@@ -59,4 +63,8 @@ table {
 th, td {
     border: 1px dashed lightgrey;
     border-radius: 5px;
+}
+
+p {
+    max-width: 800px;
 }
